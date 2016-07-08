@@ -1,0 +1,46 @@
+﻿body, * {
+     font-family: Arial;
+     margin: 0;
+     padding: 0;
+     font-size: 100%;
+     list-style-type: none;
+}
+
+/* ID Styles */
+#App_Wrapper{
+    width: 1024px;
+    position: relative;
+    margin: 0 auto;
+    outline: 1px solid #ccc;
+    padding: 1%;
+}
+
+#Media_Content{
+    width: 54%;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 1%;
+}
+
+#Narrative_Content{
+    width: 40%;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 1%;
+    margin-left: 1%;
+}
+
+/* Class Styles */
+.clearFix{
+    clear: both;
+}
+
+.rnd-corners-sm{
+    border-radius: 5px;
+}
+.rnd-corners-med{
+    border-radius: 10px;
+}
+.rnd-corners-lg{
+    border-radius: 15px;
+}

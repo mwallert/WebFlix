@@ -1,0 +1,33 @@
+[
+  {
+    "movie_title": "Finding Dory",
+    "run_time": 90,
+    "summary": "description",
+    "cast": "empty"
+  },
+  {
+    "movie_title": "The Holy Grail",
+    "run_time": 90,
+    "summary": "description",
+    "cast": "empty"
+  },
+  {
+    "movie_title": "Independance Day: Resurgence",
+    "run_time": 90,
+    "summary": "description",
+    "cast": "empty"
+  },
+  {
+    "movie_title": "Jurassic World",
+    "run_time": 90,
+    "summary": "description",
+    "cast": "empty"
+  },
+  {
+    "movie_title": "Star Wars",
+    "run_time": 90,
+    "summary": "description",
+    "cast": "empty"
+  }
+]
+
