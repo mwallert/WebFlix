@@ -22,6 +22,7 @@
         function init() {
             vm.getMovies()
                 .then(function () {
+                    console.log(vm.movies);
                     vm.selectedMovie = vm.movies[0];
                 });
         }

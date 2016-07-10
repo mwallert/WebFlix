@@ -30,7 +30,6 @@
 
         function makeMovies(data) {
             _.each(data, function (l) {
-                console.log(l);
                 vm.movies.push(new Movie(l));
             });
             return vm.movies;

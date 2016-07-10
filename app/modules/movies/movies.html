@@ -4,7 +4,8 @@
 
 <section class="rnd-corners-med" id="Media_Content">
     <div>
-        <img src="{{ 'https://image.tmdb.org/t/p/w370' + movies.selectedMovie.poster_path }}">
+        <p>{{ movies.selectedMovie.shortDesc() }}</p>
+        <img data-ng-src="{{ movies.selectedMovie.posterUrl() }}" alt="Movie Poster">
     </div>
 </section>
 <section class="rnd-corners-med" id="Narrative_Content">

@@ -18,18 +18,13 @@
             }
 
             Movie.prototype = {
+                
                 shortDesc: function () {
-                    return this.overview.substr(0, 25).replace(/\s$/, '') + '...';
+                    return this.overview.substr(0, 50).replace(/\s$/, '') + '...';
                 },
-                checkInOut: function () {
-                    if (this.checkedIn) {
-                        alert('This movie is available...');
-                        this.checkedIn = !confirm('Would you like to check it out?');
-                    }
-                    else {
-                        alert('This movie is currently unavailable...');
-                        this.checkedIn = confirm('Would you like to check it in?');
-                    }
+                
+                posterUrl: function () {
+                    return 'https://image.tmdb.org/t/p/w370' + this.poster_path;
                 }
             };
 
