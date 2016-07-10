@@ -6,25 +6,10 @@
     <link href="styles/webflix.css" rel="stylesheet" />
 </head>
 <body>
-    <div ng-app="webflixApp" ng-controller="MoviesController as movies"id="App_Wrapper">
-        <h1>Webflix</h1>
-        <p>The K Mart Netflix.</p>
+    <div data-ng-app="webflixApp" id="App_Wrapper">
 
-        <section class="rnd-corners-med" id="Media_Content">
-            <div>
-                <img src="{{ 'https://image.tmdb.org/t/p/w370' + movies.selectedMovie.poster_path }}">
-            </div>
-        </section>
-        <section class="rnd-corners-med" id="Narrative_Content">
-            <ul>
-                <li ng-repeat="movie in movies.movies">
-                    <a href="#" ng-click="movies.selectMovie(movie)">
-                        {{ movie.title }}
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <div class="clearFix"></div>
+        <div data-ui-view></div>
+
     </div>
 
     <script src="build/js/deps.js"></script>
