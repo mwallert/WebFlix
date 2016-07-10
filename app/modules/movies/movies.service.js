@@ -6,27 +6,34 @@
     angular.module('webflixApp')
         .service('Movies', Movies);
 
-    Movies.$inject = ['$http'];
+    Movies.$inject = ['Movie', '$http'];
 
-    function Movies($http) {
+    function Movies(Movie, $http) {
 
         var vm = this;
 
         vm.getMovies = getMovies;
-        vm.movies = {};
+        vm.makeMovies = makeMovies;
+        vm.movies = [];
 
 
-        function getMovies () {
+        function getMovies() {
             return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
-                .then(function success(res) {
+                .then(function (res) {
+                    return vm.makeMovies(res.data.results);
+                }, function (err) {
+                    console.log(err);
+                    return 'Sorry, there was a problem getting movies.';
+                });
+        }
 
-                        vm.movies = res.data.results;
 
-                        console.log(vm.movies);
-                },
-                    function error(err) {
-                        console.log(err);
-                    });
+        function makeMovies(data) {
+            _.each(data, function (l) {
+                console.log(l);
+                vm.movies.push(new Movie(l));
+            });
+            return vm.movies;
         }
     }
 

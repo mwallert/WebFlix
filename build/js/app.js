@@ -27,49 +27,48 @@
                 templateUrl: 'build/partials/movies/movies.html',
                 controller: 'MoviesController',
                 controllerAs: 'movies'
-            })
-            .state('movies.movie', {
-                url: '/:movie_title',
-                templateUrl: 'build/partials/movies/movie.html',
-                controller: 'MovieController',
-                controllerAs: 'movie',
-                resolve: {
-                    movie: ["movies", "MoviesService", "$stateParams", function (movies, MoviesService, $stateParams) {
-                        return MoviesService.find($stateParams.movie_title);
-                    }]
-                }
             });
-
     }
 
 }());
-
 
 (function () {
 
     'use strict';
 
     angular.module('webflixApp')
-        .controller('MovieController', MovieController);
 
+        .factory('Movie', function () {
+            function Movie(data) {
+                _.merge(this, {
+                    title: '',
+                    release_date: '',
+                    genre_ids: [],
+                    overview: '',
+                    poster_path: '',
+                    vote_average: '',
+                    checkedIn: true
+                }, data || {});
+            }
 
-    function MovieController() {
+            Movie.prototype = {
+                shortDesc: function () {
+                    return this.overview.substr(0, 25).replace(/\s$/, '') + '...';
+                },
+                checkInOut: function () {
+                    if (this.checkedIn) {
+                        alert('This movie is available...');
+                        this.checkedIn = !confirm('Would you like to check it out?');
+                    }
+                    else {
+                        alert('This movie is currently unavailable...');
+                        this.checkedIn = confirm('Would you like to check it in?');
+                    }
+                }
+            };
 
-        var vm = this;
-        vm.test = 'testing testing';
-    }
-
-}());
-
-/**
- * Created by Neil Strain on 7/10/2016.
- */
-
-(function () {
-
-    'use strict';
-
-
+            return Movie;
+        });
 }());
 
 
@@ -125,27 +124,34 @@
     angular.module('webflixApp')
         .service('Movies', Movies);
 
-    Movies.$inject = ['$http'];
+    Movies.$inject = ['Movie', '$http'];
 
-    function Movies($http) {
+    function Movies(Movie, $http) {
 
         var vm = this;
 
         vm.getMovies = getMovies;
-        vm.movies = {};
+        vm.makeMovies = makeMovies;
+        vm.movies = [];
 
 
-        function getMovies () {
+        function getMovies() {
             return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
-                .then(function success(res) {
+                .then(function (res) {
+                    return vm.makeMovies(res.data.results);
+                }, function (err) {
+                    console.log(err);
+                    return 'Sorry, there was a problem getting movies.';
+                });
+        }
 
-                        vm.movies = res.data.results;
 
-                        console.log(vm.movies);
-                },
-                    function error(err) {
-                        console.log(err);
-                    });
+        function makeMovies(data) {
+            _.each(data, function (l) {
+                console.log(l);
+                vm.movies.push(new Movie(l));
+            });
+            return vm.movies;
         }
     }
 

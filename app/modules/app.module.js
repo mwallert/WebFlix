@@ -26,19 +26,7 @@
                 templateUrl: 'build/partials/movies/movies.html',
                 controller: 'MoviesController',
                 controllerAs: 'movies'
-            })
-            .state('movies.movie', {
-                url: '/:movie_title',
-                templateUrl: 'build/partials/movies/movie.html',
-                controller: 'MovieController',
-                controllerAs: 'movie',
-                resolve: {
-                    movie: function (movies, MoviesService, $stateParams) {
-                        return MoviesService.find($stateParams.movie_title);
-                    }
-                }
             });
-
     }
 
 }());
