@@ -1,31 +1,37 @@
 ﻿
-angular.module('webflixApp')
-    .service('Movies', Movies);
+(function () {
 
-Movies.$inject = ['$http'];
+    'use strict';
 
-function Movies($http) {
+    angular.module('webflixApp')
+        .service('Movies', Movies);
 
-    var vm = this;
+    Movies.$inject = ['$http'];
 
-    vm.movies = {};
+    function Movies($http) {
 
-    vm.getMovies = function () {
-        return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
-            .then(function success(res) {
+        var vm = this;
 
-                vm.movies = res.data.results;
+        vm.movies = {};
 
-                console.log(vm.movies);
+        vm.getMovies = function () {
+            return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
+                .then(function success(res) {
 
-            },
-                function error(err) {
-                    console.log(err);
-                });
-    };
+                        vm.movies = res.data.results;
 
-    vm.showContent = function (movie) {
-        
-        return movie.summary;
+                        console.log(vm.movies);
+
+                    },
+                    function error(err) {
+                        console.log(err);
+                    });
+        };
+
+        vm.showContent = function (movie) {
+
+            return movie.summary;
+        }
     }
-}
+
+}());

@@ -1,28 +1,34 @@
 ﻿
-angular.module('webflixApp')
-    .controller('MoviesController', MoviesController);
+(function () {
 
-function MoviesController(Movies) {
+    'use strict';
 
-    var vm = this;
+    angular.module('webflixApp')
+        .controller('MoviesController', MoviesController);
 
-    vm.movies = [];
-    vm.selectedMovie = {};
+    function MoviesController(Movies) {
 
-    vm.currentContent = '';
+        var vm = this;
 
-    Movies.getMovies()
-        .then(function () {
-            vm.movies = Movies.movies;
-        });
+        vm.movies = [];
+        vm.selectedMovie = {};
 
-    vm.selectMovie = function (movie) {
-        vm.selectedMovie = movie;
+        vm.currentContent = '';
+
+        Movies.getMovies()
+            .then(function () {
+                vm.movies = Movies.movies;
+            });
+
+        vm.selectMovie = function (movie) {
+            vm.selectedMovie = movie;
+        };
+
+        vm.showContent = function (movie) {
+            vm.currentContent = Movies.showContent(movie);
+        };
+
+        vm.test = 'Hello Everyone!';
     }
 
-    vm.showContent = function (movie) {
-        vm.currentContent = Movies.showContent(movie);
-    }
-
-    vm.test = 'Hello Everyone!';
-}
+}());

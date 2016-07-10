@@ -1,2 +1,8 @@
 ﻿
-angular.module('webflixApp', []);
+(function () {
+
+    'use strict';
+
+    angular.module('webflixApp', []);
+
+}());
