@@ -10,6 +10,7 @@
 
         var vm = this;
 
+        vm.getMovies = getMovies;
         vm.movies = [];
         vm.selectMovie = selectMovie;
         vm.selectedMovie = {};
@@ -19,13 +20,16 @@
 
         function init() {
             // Get movies and select the first one when the app loads.
-            Movies.getMovies()
+            vm.getMovies()
                 .then(function () {
                     vm.movies = Movies.movies;
                     vm.selectedMovie = vm.movies[0];
                 });
         }
 
+        function getMovies() {
+            return Movies.getMovies();
+        }
 
         function selectMovie(movie) {
             vm.selectedMovie = movie;
