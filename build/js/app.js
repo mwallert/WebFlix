@@ -1,62 +1,80 @@
 
-MoviesController.$inject = ["Movies"];
-angular.module('webflixApp', []);
+(function () {
 
-angular.module('webflixApp')
-    .controller('MoviesController', MoviesController);
+    'use strict';
 
-function MoviesController(Movies) {
+    angular.module('webflixApp', []);
 
-    var vm = this;
+}());
 
-    vm.movies = [];
-    vm.selectedMovie = {};
 
-    vm.currentContent = '';
+(function () {
 
-    Movies.getMovies()
-        .then(function () {
-            vm.movies = Movies.movies;
-        });
+    'use strict';
 
-    vm.selectMovie = function (movie) {
-        vm.selectedMovie = movie;
-    }
+    MoviesController.$inject = ["Movies"];
+    angular.module('webflixApp')
+        .controller('MoviesController', MoviesController);
 
-    vm.showContent = function (movie) {
-        vm.currentContent = Movies.showContent(movie);
-    }
+    function MoviesController(Movies) {
 
-    vm.test = 'Hello Everyone!';
-}
+        var vm = this;
 
-angular.module('webflixApp')
-    .service('Movies', Movies);
+        vm.movies = [];
+        vm.selectMovie = selectMovie;
+        vm.selectedMovie = {};
 
-Movies.$inject = ['$http'];
 
-function Movies($http) {
+        init();
 
-    var vm = this;
-
-    vm.movies = {};
-
-    vm.getMovies = function () {
-        return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
-            .then(function success(res) {
-
-                vm.movies = res.data.results;
-
-                console.log(vm.movies);
-
-            },
-                function error(err) {
-                    console.log(err);
+        function init() {
+            // Get movies and select the first one when the app loads.
+            Movies.getMovies()
+                .then(function () {
+                    vm.movies = Movies.movies;
+                    vm.selectedMovie = vm.movies[0];
                 });
-    };
+        }
 
-    vm.showContent = function (movie) {
-        
-        return movie.summary;
+
+        function selectMovie(movie) {
+            vm.selectedMovie = movie;
+        }
     }
-}
+
+}());
+
+
+(function () {
+
+    'use strict';
+
+    angular.module('webflixApp')
+        .service('Movies', Movies);
+
+    Movies.$inject = ['$http'];
+
+    function Movies($http) {
+
+        var vm = this;
+
+        vm.getMovies = getMovies;
+        vm.movies = {};
+
+        
+        function getMovies () {
+            return $http.get('http://api.themoviedb.org/3/genre/18/movies?api_key=ff562fe235d88443c78581b04f7edb57')
+                .then(function success(res) {
+
+                        vm.movies = res.data.results;
+
+                        console.log(vm.movies);
+
+                    },
+                    function error(err) {
+                        console.log(err);
+                    });
+        };
+    }
+
+}());

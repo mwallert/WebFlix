@@ -11,24 +11,25 @@
         var vm = this;
 
         vm.movies = [];
+        vm.selectMovie = selectMovie;
         vm.selectedMovie = {};
 
-        vm.currentContent = '';
 
-        Movies.getMovies()
-            .then(function () {
-                vm.movies = Movies.movies;
-            });
+        init();
 
-        vm.selectMovie = function (movie) {
+        function init() {
+            // Get movies and select the first one when the app loads.
+            Movies.getMovies()
+                .then(function () {
+                    vm.movies = Movies.movies;
+                    vm.selectedMovie = vm.movies[0];
+                });
+        }
+
+
+        function selectMovie(movie) {
             vm.selectedMovie = movie;
-        };
-
-        vm.showContent = function (movie) {
-            vm.currentContent = Movies.showContent(movie);
-        };
-
-        vm.test = 'Hello Everyone!';
+        }
     }
 
 }());
