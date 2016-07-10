@@ -20,6 +20,7 @@
          */
 
         // TODO: Use ui-router resolve function to initialize movies. Will make movies array available in child states.
+        // TODO: Make a child state for individual movie view.
         $stateProvider
             .state('movies', {
                 url: '/movies',
