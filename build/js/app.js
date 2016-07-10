@@ -32,11 +32,43 @@
                 url: '/:movie_title',
                 templateUrl: 'build/partials/movies/movie.html',
                 controller: 'MovieController',
-                controllerAs: 'movie'
+                controllerAs: 'movie',
+                resolve: {
+                    movie: ["movies", "MoviesService", "$stateParams", function (movies, MoviesService, $stateParams) {
+                        return MoviesService.find($stateParams.movie_title);
+                    }]
+                }
             });
 
-
     }
+
+}());
+
+
+(function () {
+
+    'use strict';
+
+    angular.module('webflixApp')
+        .controller('MovieController', MovieController);
+
+
+    function MovieController() {
+
+        var vm = this;
+        vm.test = 'testing testing';
+    }
+
+}());
+
+/**
+ * Created by Neil Strain on 7/10/2016.
+ */
+
+(function () {
+
+    'use strict';
+
 
 }());
 
