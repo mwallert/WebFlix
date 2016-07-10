@@ -32,13 +32,15 @@
             // Get movies and select the first one when the app loads.
             vm.getMovies()
                 .then(function () {
-                    vm.movies = Movies.movies;
                     vm.selectedMovie = vm.movies[0];
                 });
         }
 
         function getMovies() {
-            return Movies.getMovies();
+            return Movies.getMovies()
+                .then(function () {
+                    vm.movies = Movies.movies;
+                });
         }
 
         function selectMovie(movie) {
