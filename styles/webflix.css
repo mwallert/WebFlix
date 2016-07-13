@@ -44,3 +44,8 @@
 .rnd-corners-lg{
     border-radius: 15px;
 }
+
+.movie-tile {
+    margin-bottom: 16px;
+    border: 1px black solid;
+}

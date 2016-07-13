@@ -6,7 +6,7 @@
     angular.module('webflixApp')
         .controller('MoviesController', MoviesController);
 
-    function MoviesController(Movies) {
+    function MoviesController(MoviesService) {
 
         var vm = this;
 
@@ -27,11 +27,10 @@
                 });
         }
 
-
         function getMovies() {
-            return Movies.getMovies()
+            return MoviesService.getMovies()
                 .then(function () {
-                    vm.movies = Movies.movies;
+                    vm.movies = MoviesService.movies;
                 });
         }
         

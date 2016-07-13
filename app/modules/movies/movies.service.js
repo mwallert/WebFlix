@@ -4,11 +4,11 @@
     'use strict';
 
     angular.module('webflixApp')
-        .service('Movies', Movies);
+        .service('MoviesService', MoviesService);
 
-    Movies.$inject = ['Movie', '$http'];
+    MoviesService.$inject = ['Movie', '$http'];
 
-    function Movies(Movie, $http) {
+    function MoviesService(Movie, $http) {
 
         var vm = this;
 
@@ -29,7 +29,7 @@
 
 
         function makeMovies(data) {
-            _.each(data, function (l) {
+            _.forEach(data, function (l) {
                 vm.movies.push(new Movie(l));
             });
             return vm.movies;

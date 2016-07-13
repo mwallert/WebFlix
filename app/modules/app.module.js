@@ -26,7 +26,7 @@
                 url: '/movies',
                 templateUrl: 'build/partials/movies/movies.html',
                 controller: 'MoviesController',
-                controllerAs: 'movies'
+                controllerAs: 'moviesCtl'
             });
     }
 

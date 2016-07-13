@@ -4,17 +4,18 @@
 
 <section class="rnd-corners-med" id="Media_Content">
     <div>
-        <p>{{ movies.selectedMovie.shortDesc() }}</p>
-        <img data-ng-src="{{ movies.selectedMovie.posterUrl() }}" alt="Movie Poster">
+        <p>{{ moviesCtl.selectedMovie.shortDesc() }}</p>
+        <img data-ng-src="{{ moviesCtl.selectedMovie.posterUrl() }}" alt="Movie Poster">
     </div>
 </section>
 <section class="rnd-corners-med" id="Narrative_Content">
-    <ul>
-        <li data-ng-repeat="movie in movies.movies">
+    <!--<ul>-->
+        <!--<li data-ng-repeat="movie in moviesCtl.movies">-->
 
-            <a href="#" data-ng-click="movies.selectMovie(movie)">{{ movie.title }}</a>
+            <!--<a href="#" data-ng-click="moviesCtl.selectMovie(movie)">{{ movie.title }}</a>-->
 
-        </li>
-    </ul>
+        <!--</li>-->
+    <!--</ul>-->
+    <movie-tile data-ng-repeat="movie in moviesCtl.movies"></movie-tile>
 </section>
 <div class="clearFix"></div>
