@@ -16,6 +16,7 @@ gulp.task('js-deps', function () {
     gulp.src([
         './bower_components/jquery/dist/jquery.js',
         './bower_components/lodash/lodash.js',
+        './bower_components/moment/moment.js',
         './bower_components/angular/angular.js',
         './bower_components/angular-ui-router/release/angular-ui-router.js',
         './bower_components/angular-bootstrap/ui-bootstrap-tpls.js'

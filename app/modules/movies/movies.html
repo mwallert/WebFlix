@@ -1,20 +1,23 @@
-
 <h1>Webflix</h1>
 <p>The K Mart Netflix.</p>
 
-<section class="rnd-corners-med" id="Media_Content">
+<section class="rnd-corners-med"
+         id="Media_Content">
     <div>
         <p>{{ moviesCtl.selectedMovie.shortDesc() }}</p>
-        <img data-ng-src="{{ moviesCtl.selectedMovie.posterUrl() }}" alt="Movie Poster">
+        <p>Release Date: {{moviesCtl.selectedMovie.release_date | niceDate}}</p>
+        <img data-ng-src="{{ moviesCtl.selectedMovie.posterUrl() }}"
+             alt="Movie Poster">
     </div>
 </section>
-<section class="rnd-corners-med" id="Narrative_Content">
+<section class="rnd-corners-med"
+         id="Narrative_Content">
     <!--<ul>-->
-        <!--<li data-ng-repeat="movie in moviesCtl.movies">-->
+    <!--<li data-ng-repeat="movie in moviesCtl.movies">-->
 
-            <!--<a href="#" data-ng-click="moviesCtl.selectMovie(movie)">{{ movie.title }}</a>-->
+    <!--<a href="#" data-ng-click="moviesCtl.selectMovie(movie)">{{ movie.title }}</a>-->
 
-        <!--</li>-->
+    <!--</li>-->
     <!--</ul>-->
     <movie-tile data-ng-repeat="movie in moviesCtl.movies"></movie-tile>
 </section>

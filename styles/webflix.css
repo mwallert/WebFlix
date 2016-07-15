@@ -48,4 +48,10 @@
 .movie-tile {
     margin-bottom: 16px;
     border: 1px black solid;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.movie-tile:hover {
+    background-color: #EBFFBC;
 }

@@ -1,16 +1,15 @@
-
 (function () {
 
-    'use strict';
+  'use strict';
 
-    angular.module('webflixApp')
-        .directive('movieTile', movieTile);
+  angular.module('webflixApp')
+    .directive('movieTile', movieTile);
 
-    function movieTile() {
-        return {
-            restrict: 'E',
-            templateUrl: 'build/partials/movie/movie-tile.html'
-        };
-    }
+  function movieTile() {
+    return {
+      restrict: 'E',
+      templateUrl: 'build/partials/movie/movie-tile.html'
+    };
+  }
 
 }());
