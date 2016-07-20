@@ -6,13 +6,14 @@
     <div>
         <p>{{ moviesCtl.selectedMovie.shortDesc() }}</p>
         <p>Release Date: {{moviesCtl.selectedMovie.release_date | niceDate}}</p>
-        <img data-ng-src="{{ moviesCtl.selectedMovie.posterUrl() }}"
+        <img ng-src="{{ moviesCtl.selectedMovie.posterUrl() }}"
              alt="Movie Poster">
     </div>
 </section>
 <section class="rnd-corners-med"
          id="Narrative_Content">
-    <movie-tile data-ng-repeat="movie in moviesCtl.movies" 
-                data-ng-click="moviesCtl.selectMovie(movie)"></movie-tile>
+    <movie-tile ng-repeat="movie in moviesCtl.movies"
+                data-selected-movie="moviesCtl.selectedMovie"
+                ng-click="moviesCtl.selectMovie(movie)"></movie-tile>
 </section>
 <div class="clearFix"></div>
