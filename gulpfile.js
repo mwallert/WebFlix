@@ -3,7 +3,9 @@
     autoprefixer = require('gulp-autoprefixer'),
     plumber = require('gulp-plumber'),
     uglify = require('gulp-uglify'),
+    htmlify = require('gulp-angular-htmlify'),
     jshint = require('gulp-jshint'),
+    iife = require('gulp-iife'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     ngAnnotate = require('gulp-ng-annotate'),
@@ -30,6 +32,9 @@ gulp.task('js-deps', function () {
 
 gulp.task('partials', function () {
     gulp.src('./app/modules/**/*.html')
+        .pipe(htmlify({
+          customPrefixes: ['ui-']
+        }))
         .pipe(gulp.dest('./build/partials'))
         .pipe(livereload());
 });
@@ -58,6 +63,7 @@ gulp.task('js', function () {
     ])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
+        .pipe(iife())
         //.pipe(sourcemaps.init())
         .pipe(concat(outputFilename))
         .pipe(ngAnnotate())
@@ -86,7 +92,7 @@ gulp.task('data', function () {
 gulp.task('serve', serve('.'));
 
 gulp.task('watch', function () {
-    livereload.listen({ port: 35730 });
+    livereload.listen();
     watch(['./app/modules/*.js', './app/modules/**/*.js'], function () {
         gulp.start('js');
     });

@@ -1,4 +1,5 @@
 <div class="movie-tile"
+     ng-class="{active: moviesCtl.selectedMovie.id === movie.id}"
      ng-click="moviesCtl.selectedMovie = movie">
     <div class="">{{ movie.title }}</div>
     <span class="movie-info">
