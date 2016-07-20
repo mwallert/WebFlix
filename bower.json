@@ -3,7 +3,7 @@
   "description": "",
   "main": "index.html",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/mwallert/WebFlix",
   "private": true,
   "ignore": [
     "**/.*",
@@ -17,5 +17,8 @@
     "angular-ui-router": "^0.3.1",
     "lodash": "^4.13.1",
     "moment": "^2.14.1"
-  }
+  },
+  "authors": [
+    "Michael Wallert <michael.wallert@hotmail.com>"
+  ]
 }
