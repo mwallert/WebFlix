@@ -13,6 +13,7 @@
 <section class="rnd-corners-med"
          id="Narrative_Content">
     <movie-tile ng-repeat="movie in moviesCtl.movies"
+                data-movie="movie"
                 data-selected-movie="moviesCtl.selectedMovie"
                 ng-click="moviesCtl.selectMovie(movie)"></movie-tile>
 </section>

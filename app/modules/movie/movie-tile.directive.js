@@ -7,7 +7,10 @@
 
   function movieTile() {
     function controller() {
-
+      var vm = this;
+      this.alertTitle = function alertTitle() {
+        alert(vm.movie.title);
+      };
     }
     return {
       restrict: 'E',
