@@ -18,6 +18,11 @@
           movie.webflixRating = rating;
           storage.set(movie.id, rating);
         }
+        this.clearRating = clearRating;
+        function clearRating(movie){
+          movie.webflixRating = 0;
+          storage.forget(movie.id);
+        }
       }
       //Directive Definition Object or DDO
       return {
