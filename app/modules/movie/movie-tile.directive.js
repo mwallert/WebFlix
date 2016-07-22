@@ -6,12 +6,7 @@
     .directive('movieTile', movieTile);
 
   function movieTile() {
-    function controller() {
-      var vm = this;
-      this.alertTitle = function alertTitle() {
-        alert(vm.movie.title);
-      };
-    }
+    function controller() {}
     return {
       restrict: 'E',
       controller: controller,

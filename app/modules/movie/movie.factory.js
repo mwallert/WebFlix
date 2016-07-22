@@ -13,16 +13,17 @@
                     overview: '',
                     poster_path: '',
                     vote_average: '',
-                    checkedIn: true
+                    checkedIn: true,
+                    webflixRating: 0
                 }, data || {});
             }
 
             Movie.prototype = {
-                
+
                 shortDesc: function () {
                     return this.overview.substr(0, 50).replace(/\s$/, '') + '...';
                 },
-                
+
                 posterUrl: function () {
                     return 'https://image.tmdb.org/t/p/w370' + this.poster_path;
                 }
