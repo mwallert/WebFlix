@@ -4,7 +4,7 @@
 
     angular.module('webflixApp')
 
-        .factory('Movie', function ($window) {
+        .factory('Movie', function (storage) {
             function Movie(data) {
                 _.merge(this, {
                     title: '',
@@ -15,7 +15,7 @@
                     vote_average: '',
                     checkedIn: true,
                 }, data || {});
-                this.webflixRating = $window.localStorage.getItem(this.id);
+                this.webflixRating = storage.get(this.id);
             }
 
             Movie.prototype = {

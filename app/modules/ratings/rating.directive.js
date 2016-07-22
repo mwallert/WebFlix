@@ -6,7 +6,7 @@
     .directive('ratings', ratings);
 
     function ratings(){
-      function controller($window){
+      function controller(storage){
         this.rateMovie = rateMovie;
         /**
         * Rate a given movie with a given rating
@@ -16,7 +16,7 @@
         */
         function rateMovie(movie,rating){
           movie.webflixRating = rating;
-          $window.localStorage.setItem(movie.id, rating);
+          storage.set(movie.id, rating);
         }
       }
       //Directive Definition Object or DDO
