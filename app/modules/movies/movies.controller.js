@@ -8,10 +8,15 @@
   function MoviesController(allMovies, $rootScope) {
     var vm = this;
 
+    vm.filterRating = 0;
     vm.movies = allMovies;
     vm.selectedMovie = allMovies[0];
     vm.selectMovie = selectMovie;
+    vm.filterByRating = filterByRating;
 
+    function filterByRating(movie){
+      return movie.webflixRating >= vm.filterRating;
+    }
     /**
      * Select a movie.
      *
@@ -27,8 +32,10 @@
      * @returns {*}
      */
     function getIndex(direction){
-      var idx = _.indexOf(vm.movies, vm.selectedMovie),
-        next = idx + direction;
+      var filteredMovies =_.filter(vm.movies, vm.filterByRating),
+          idx =_.indexOf(filteredMovies, vm.selectedMovie),
+          next = idx + direction;
+
       return next;
     }
     /**
@@ -38,9 +45,10 @@
     */
     function move(direction, dontMoveIf){
       $rootScope.$apply(function(){
-        var next = getIndex(direction);
+        var next = getIndex(direction), _movies;
         if(dontMoveIf(next)) return;
-        selectMovie(vm.movies[next]);
+        _movies =_.filter(vm.movies, vm.filterByRating);
+        selectMovie(_movies[next]);
       });
     }
     /**
@@ -50,7 +58,8 @@
      */
     Mousetrap.bind('j', function(){
         move(1, function(next){
-          return next > vm.movies.length - 1;
+          var filteredMovies =_.filter(vm.movies, vm.filterByRating);
+          return next > filteredMovies.length - 1;
         });
       });
     /**

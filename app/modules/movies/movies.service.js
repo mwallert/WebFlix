@@ -27,6 +27,7 @@
 
     function makeMovies(data) {
       _.forEach(data, function (l) {
+        if (/Wife/.test(l.title)) return;
         vm.movies.push(new Movie(l));
       });
       return vm.movies;
