@@ -1,5 +1,4 @@
 ﻿(function () {
-
   'use strict';
 
   angular.module('webflixApp')
@@ -13,12 +12,6 @@
     vm.selectedMovie = allMovies[0];
     vm.selectMovie = selectMovie;
     vm.filterByRating = filterByRating;
-
-    $rootScope.$watch(function(){
-      return vm.filterRating;
-    }, function(newFilterRating, oldFilterRating){
-      storage.set('filterRating', newFilterRating);
-    });
 
     function filterByRating(movie){
       return movie.webflixRating >= vm.filterRating;
