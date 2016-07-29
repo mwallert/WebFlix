@@ -23,6 +23,7 @@
      */
     function selectMovie(movie){
       vm.selectedMovie = movie;
+      console.log(movie);
     }
     /**
      * Gets the index of the selected movie and

@@ -1,1 +1,36 @@
-<h1>{{movie.movie}}</h1>
+<div class="row">
+  <div class="col-md-12">
+    <h1>{{movie.movie.title}}</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-7">
+    <table class="table table-striped">
+      <tr ng-repeat="(key,value) in movie.movie">
+        <th>
+          {{key}}
+        </th>
+        <td>
+
+          <span ng-if="key !== 'poster_path' && key !== 'webflixRating'">
+            {{value}}
+          </span>
+          
+          <span ng-if="key === 'webflixRating'">
+            <ratings data-movie="moviesCtl.selectedMovie"></ratings>
+          </span>
+
+
+          <span>
+            <img ng-if="key === 'poster_path'" ng-src="{{ movie.movie.posterUrl() }}"
+               alt="Movie Poster">
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-5">
+
+  </div>
+</div>

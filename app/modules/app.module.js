@@ -36,7 +36,7 @@
       })
       .state('movies.movie', {
          url: '/:movieId',
-         templateUrl: 'build/partials/movie/movie.html',
+         templateUrl: 'build/partials/movies/movie.html',
          controller: 'MovieController',
          controllerAs: 'movie',
          resolve: {
